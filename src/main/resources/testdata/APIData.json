@@ -1,0 +1,11 @@
+{
+  "Test123": [
+    {"ServiceURL": "https://reqres.in/api/users?page=2"},
+    {"RequestFormat": "Consent_Body"},
+    {"RequestMethod": "POST-Header"},
+    {"StatusCode":  "200"}
+  ],
+  "Test234": [
+
+  ]
+}

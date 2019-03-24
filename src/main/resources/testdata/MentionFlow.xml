@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<class>
+
+    <Test id ="Test123">
+        <DataRef>Test123</DataRef>
+        <Flow>@Test123</Flow>
+    </Test>
+</class>
