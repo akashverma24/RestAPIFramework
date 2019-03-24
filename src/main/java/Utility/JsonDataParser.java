@@ -40,7 +40,7 @@ public class JsonDataParser {
             JsonReader jsonReader = Json.createReader(inputStream)){
             JsonObject objJsonReader = jsonReader.readObject();
             result = objJsonReader.getJsonObject(fieldname).toString();
-            System.out.println(">>AKASH>"+result);
+            
 
 
         }
