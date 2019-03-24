@@ -61,15 +61,15 @@ public class StepDefinitionHelper implements GlobalObjects {
             }
 
             String reqFormat = JsonDataParser.getValueFromJSONFile(stepDefinitionClassInstance.currentDataValue,"RequestFormat");
-            System.out.println("Checkpoint3>>"+reqFormat);
+            
             JSONObject jsonObject1 = JsonDataParser.getRequestObjectPositive(stepDefinitionClassInstance.currentDataValue,reqFormat);
             Global.setRequestObject(jsonObject1);
             Global.setRequestString(Global.getRequestObject().toString());
             String str = Global.getRequestString();
-            System.out.println("Checkpoint4>>"+str);
+            
 
             isSuccess = Global.HttpClient(requestMethodValueFromJsonFile);
-            System.out.println("Checkpoint5>>"+isSuccess);
+            
 
         }
 
