@@ -2,7 +2,7 @@
 <class>
 
     <Test id ="Test123">
-        <DataRef>APITESTING_POST</DataRef>
+        <DataRef>APITESTING_GET</DataRef>
         <Flow>@Test123</Flow>
     </Test>
 </class>
