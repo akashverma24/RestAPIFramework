@@ -8,6 +8,11 @@ public class ReadConfigurationProperties implements GlobalObjects{
     public static String testpostpath;
     public static String mentionflowpath;
 
+    /**
+     * Read all the values stored in Config.properties file
+     *
+     */
+
     public void  retrieve_configproperties(){
 
         ResourceBundle sb  = ResourceBundle.getBundle("properties.config");

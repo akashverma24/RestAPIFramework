@@ -4,6 +4,7 @@ import java.io.*;
 
 public class JsonDataReader {
 
+
     public String getFileData(String filePath) throws IOException {
         BufferedReader bufferedReader = null;
         StringBuffer  stringBuffer = new StringBuffer();

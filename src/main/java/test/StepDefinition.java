@@ -1,22 +1,20 @@
+/*****
+ * StepDefinition class consist of inner binding
+ * of Cucumber Gherkin steps and java logic to
+ * provide logical meaning defined in the
+ * TestAPI.feature
+ */
+
+
 package test;
 
 import Utility.GlobalObjects;
-import cucumber.api.PendingException;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 import java.util.Collection;
 
-import static io.restassured.RestAssured.given;
 
 
 public class StepDefinition implements GlobalObjects {
@@ -28,6 +26,13 @@ public class StepDefinition implements GlobalObjects {
     public static String userStoryName;
     public String currentTagName;
 
+    /***
+     * setUp method is extracting the annotation values from the feature file.
+     * Annotation values such as Scenario, Scenario Description, UserStoryName,
+     * CurrentTagName, DataRef and setting them globally for use in step definition.
+     * @param scenario
+     * @throws Exception
+     */
 
     @Before
     public void setUp(Scenario scenario) throws Exception {

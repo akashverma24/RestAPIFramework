@@ -1,8 +1,18 @@
+/**
+ * GetValue is a utility class with method
+ * getValueResponse to fetch any particular
+ * value from the saved API in GenerateAPIResponse
+ * json File using the key tag value
+ *
+ */
+
+
+
 package Utility;
 
-        import org.json.JSONObject;
+import org.json.JSONObject;
 
-        import java.io.IOException;
+import java.io.IOException;
 
 public class GetValue extends Global {
 

@@ -1,11 +1,13 @@
 {
-  "Test123": [
-    {"ServiceURL": "https://reqres.in/api/users?page=2"},
-    {"RequestFormat": "Consent_Body"},
-    {"RequestMethod": "POST-Header"},
+  "APITESTING_GET": [
+    {"ServiceURL": "https://reqres.in/api/users"},
+    {"RequestMethod": "GET-Header"},
     {"StatusCode":  "200"}
   ],
-  "Test234": [
-
+  "APITESTING_POST": [
+    {"ServiceURL": "https://reqres.in/api/users"},
+    {"RequestMethod": "POST-Header"},
+    {"RequestFormat": "Payload_Body"},
+    {"StatusCode":  "200"}
   ]
 }

@@ -1,3 +1,10 @@
+/***
+ * GlobalObject is an interface
+ * all the class instances are defined here
+ * and all the classes implements this class.
+ */
+
+
 package Utility;
 
 import ApplicationRunner.AppTest;

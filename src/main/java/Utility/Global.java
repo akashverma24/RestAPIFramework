@@ -1,9 +1,12 @@
+/***
+ * Global class is primary a getter and setter class defining all
+ * the details related to API data globally
+ */
+
 package Utility;
 
-import gherkin.lexer.Gl;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHeaders;
-import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
@@ -16,7 +19,6 @@ import org.apache.http.util.EntityUtils;
 import org.json.simple.JSONObject;
 
 import javax.net.ssl.SSLContext;
-import java.io.IOException;
 
 public class Global implements GlobalObjects{
 
@@ -24,7 +26,7 @@ public class Global implements GlobalObjects{
     public static String responseString;
     public static String requestString;
     private static boolean isSuccess = true;
-    private static HttpResponse response;
+    private static CloseableHttpResponse response;
     private static HttpEntity entity;
     private static JSONObject requestObject;
 
@@ -38,7 +40,7 @@ public class Global implements GlobalObjects{
 
     public static void setServiceUrl(String url){
 
-        Global.serviceURL = serviceURL;
+        Global.serviceURL = url;
     }
     public static String getRequestString(){
         return requestString;
@@ -47,10 +49,10 @@ public class Global implements GlobalObjects{
         Global.requestString = requestString;
     }
 
-    public static HttpResponse getResponse(){
+    public static CloseableHttpResponse getResponse(){
         return response;
     }
-    public static void setResponse(HttpResponse response){
+    public static void setResponse(CloseableHttpResponse response){
 
         Global.response = response;
     }
@@ -76,12 +78,23 @@ public class Global implements GlobalObjects{
         return requestObject;
     }
 
+    /***
+     * HttpClient method runs the API
+     * and passed the Certificate configuration required by the API
+     * It builds the protocol config and execute the Http Client
+     * returns a boolean value.
+     * @param requestMethod
+     * @return
+     * @throws Exception
+     */
+
     public static boolean HttpClient(String requestMethod) throws Exception {
 
         SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null,(certificate, authType) -> true).build();
         CloseableHttpClient httpClient = null;
         HttpUriRequest request =null;
         String uri = Global.getServiceURL();
+        System.out.println("::::::Validation>> Extract the Endpoint of the API Request "+uri);
 
         if(uri.contains("ConsentID")){
             String actualConsentId = getValueClassInstance.getValueResponse();
@@ -90,6 +103,7 @@ public class Global implements GlobalObjects{
         }
 
         String requestString = Global.getRequestString();
+        System.out.println(":::::Validation>> Verify the Request Payload is in the correct Format::::: "+ requestString);
 
         try{
             switch (requestMethod){
@@ -107,18 +121,21 @@ public class Global implements GlobalObjects{
                             .setEntity(requestBody)
                             .build();
 
+                    System.out.println(":::::Validation>>Http Client is connected and protocol build is ready");
                     break;
 
                 }
 
                 case "GET-Header":{
+                    System.out.println("::::::Validation>>Service URI::::::: "+uri);
                     httpClient = HttpClients.custom().setSSLContext(sslContext).setSSLHostnameVerifier(new NoopHostnameVerifier()).build();
                     request = RequestBuilder
                             .get()
                             .setUri(uri)
                             .build();
+                    System.out.println(":::::Validation>>Http Client is connected and protocol build is ready for GET");
 
-                     break;
+                    break;
                 }
                 default: {
                     isSuccess = false;
@@ -144,11 +161,13 @@ public class Global implements GlobalObjects{
                 }
 
                 CloseableHttpResponse response = httpClient.execute(request);
+                System.out.println("Checkpoint9>>API Executed");
                 Global.setResponse(response);
                 Global.setEntityValue(response.getEntity());
 
                 if(response.getEntity()!= null){
                     Global.responseString = EntityUtils.toString(response.getEntity());
+                    System.out.println(Global.responseString);
                 }
                 response.close();
                 httpClient.close();

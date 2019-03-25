@@ -28,6 +28,18 @@ public class StaxParser implements GlobalObjects {
 
     public String intGlobalTestIDCount;
 
+    /**
+     * getTestIDNames method to fetch the testID name
+     * from the MentionFlow.xml file
+     *
+     *
+     * @return
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     * @throws XPathExpressionException
+     */
+
     public List<String> getTestIDNames() throws ParserConfigurationException, IOException, SAXException, XPathExpressionException {
         readConfigurationPropertiesClassInstance.retrieve_configproperties();
         List<String> strListTestID = new ArrayList<String>();
@@ -59,6 +71,18 @@ public class StaxParser implements GlobalObjects {
         return strListTestID;
 
     }
+
+
+    /**
+     *
+     * getUserStoryName method is used to fetch the
+     * userstory name from the MentionFlow.xml
+     *
+     * @param testID
+     * @return
+     * @throws FileNotFoundException
+     * @throws XMLStreamException
+     */
 
     public  String[] getUserStoryName(String testID) throws FileNotFoundException, XMLStreamException {
 
@@ -140,6 +164,16 @@ public class StaxParser implements GlobalObjects {
     }
 
 
+    /***
+     * getDataRef method fetches the value of data ref from the mention flow.xml
+     * which later help in identifying the type of tag that needs to be picked up
+     * in the JSON File
+     *
+     * @param strCurrentTagName
+     * @param xmltagName
+     * @return
+     * @throws Exception
+     */
 
 
     public String getDataRef(String strCurrentTagName, String xmltagName) throws Exception {

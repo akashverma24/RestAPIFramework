@@ -15,6 +15,17 @@ import java.io.InputStream;
 import static Utility.GlobalObjects.readConfigurationPropertiesClassInstance;
 
 public class JsonDataParser {
+
+    /**
+     * getValueFromJSONFile method extracts the value
+     * from the APIData.json file when the field name is
+     * supplied as a parameter
+     *
+     * @param dataToBeReferred
+     * @param Fieldname
+     * @return
+     * @throws IOException
+     */
     public static String getValueFromJSONFile(String dataToBeReferred, String Fieldname) throws IOException {
 
         String value = "";
@@ -33,6 +44,17 @@ public class JsonDataParser {
         return value;
     }
 
+    /**
+     * getRequestObjectPositive method extracts the value
+     * of the request Body from TestPost.json
+     * returns a JSON Object
+     *
+     * @param dataToBeReferred
+     * @param fieldname
+     * @return
+     * @throws IOException
+     * @throws ParseException
+     */
     public static JSONObject getRequestObjectPositive(String dataToBeReferred, String fieldname) throws IOException, ParseException {
         String result = null;
         readConfigurationPropertiesClassInstance.retrieve_configproperties();
@@ -40,7 +62,6 @@ public class JsonDataParser {
             JsonReader jsonReader = Json.createReader(inputStream)){
             JsonObject objJsonReader = jsonReader.readObject();
             result = objJsonReader.getJsonObject(fieldname).toString();
-            System.out.println(">>AKASH>"+result);
 
 
         }
