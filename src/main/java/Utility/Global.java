@@ -161,7 +161,7 @@ public class Global implements GlobalObjects{
                 }
 
                 CloseableHttpResponse response = httpClient.execute(request);
-                System.out.println("Checkpoint9>>API Executed");
+                System.out.println(":::::::Validation>>API Executed::::::::::");
                 Global.setResponse(response);
                 Global.setEntityValue(response.getEntity());
 
